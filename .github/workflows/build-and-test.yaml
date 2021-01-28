@@ -17,7 +17,7 @@ jobs:
       - name: Checkout branding repository
         uses: actions/checkout@v2
         with:
-          repository: impactasaurus/branding
+          repository: themakshter/basic-custom-map
           path: ./src/branding
   install:
     needs: setup
