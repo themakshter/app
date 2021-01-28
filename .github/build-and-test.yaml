@@ -1,0 +1,39 @@
+name: ci
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Checkout branding repository
+        uses: actions/checkout@v2
+        with:
+          repository: impactasaurus/branding
+          path: ./src/branding
+  install:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: npm ci
+  lint:
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Running Linters
+        run: npm run lint
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Running Tests
+        run: npm test
