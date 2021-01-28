@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  setup:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -19,24 +19,13 @@ jobs:
         with:
           repository: themakshter/basic-custom-map
           path: ./src/branding
-  install:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 11.10.0
       - name: Install dependencies
-        run: |
-          ls
-          pwd
-          npm ci
-  lint:
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - name: Running Linters
+        run: npm ci
+      - name: Run Linter
         run: npm run lint
-  test:
-    needs: lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Running Tests
+      - name: Run Tests
         run: npm test
