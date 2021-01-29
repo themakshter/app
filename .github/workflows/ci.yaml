@@ -19,7 +19,7 @@ jobs:
       - name: Checkout branding repository
         uses: actions/checkout@v2
         with:
-          repository: impactasaurus/branding
+          repository: impactasaurus/server
           path: ./src/branding
       - name: Use Node.js
         uses: actions/setup-node@v1
