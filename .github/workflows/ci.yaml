@@ -17,7 +17,7 @@ jobs:
       - name: Checkout branding repository
         uses: actions/checkout@v2
         with:
-          repository: themakshter/basic-custom-map
+          repository: impactasaurus/branding
           path: ./src/branding
       - name: Use Node.js
         uses: actions/setup-node@v1
@@ -29,3 +29,10 @@ jobs:
         run: npm run lint
       - name: Run Tests
         run: npm test
+      - name: Generate Production Files
+        run: npm run build:prod
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: app
+          path: build
