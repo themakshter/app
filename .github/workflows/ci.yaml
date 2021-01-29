@@ -19,7 +19,7 @@ jobs:
       - name: Checkout branding repository
         uses: actions/checkout@v2
         with:
-          repository: impactasaurus/server
+          repository: impactasaurus/branding
           token: ${{ secrets.BRANDING_PERSONAL_ACCESS_TOKEN }}
           path: ./src/branding
       - name: Use Node.js
