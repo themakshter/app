@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Remove previous branding folder
+        run: rm -rf ./src/branding
       - name: Checkout branding repository
         uses: actions/checkout@v2
         with:
