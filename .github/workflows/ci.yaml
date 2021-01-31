@@ -62,7 +62,7 @@ jobs:
   deploy:
     name: Deploy App
     if: github.ref == 'refs/heads/master'
-    needs: build-and-test
+    needs: build-prod
     runs-on: ubuntu-latest
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
